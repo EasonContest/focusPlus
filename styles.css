@@ -46,7 +46,7 @@
 #first_text {
     width: 152px;
     height: 107px;
-    font-family: HelveticaNeue;
+    font-family: "微軟正黑體";
     font-size: 38px;
     font-weight: normal;
     font-stretch: normal;
@@ -61,7 +61,7 @@
 #second_text, #third_text, #fifth_text, #sixth_text {
     width: 152px;
     height: 53px;
-    font-family: HelveticaNeue;
+    font-family: "微軟正黑體";
     font-size: 38px;
     font-weight: normal;
     font-stretch: normal;
@@ -78,7 +78,7 @@
 #fourth_text {
     width: 190px;
     height: 161px;
-    font-family: HelveticaNeue;
+    font-family: "微軟正黑體";
     font-size: 38px;
     font-weight: normal;
     font-stretch: normal;
@@ -116,16 +116,16 @@
 
 /* 照片 */
 #portfolio {
-    width: 117px;
-    height: 117px;
+    width: 125px;
+    height: 125px;
     display: block;
     margin: auto;
     padding-top: 16px;
 }
 
 #output {
-    width: 123px;
-    height: 123px;
+    width: 131px;
+    height: 131px;
     display: block;
     margin: auto;
     padding-top: 10px;
