@@ -1,0 +1,106 @@
+<html> 
+ <head> 
+    <meta charset="utf-8"> 
+    <title>test</title> 
+ <style>
+ .axis path,
+ .axis line{
+ fill: none;
+ stroke: black;
+ shape-rendering: crispEdges;
+ }
+ 
+ .axis text {
+ font-family: sans-serif;
+ font-size: 11px;
+ }
+
+ .overlay {
+ fill: none;
+ pointer-events: all;
+ }
+ 
+ .tooltip{
+ width: 150px;
+ height: auto;
+ position: absolute;
+ font-family: simsun;
+ font-size: 16px;
+ line-height: 26px;
+ text-align: left;
+ border: 1px solid black;
+ background-color: white;
+ border-radius: 5px;
+  }
+
+  .tooltip .title{
+   border-bottom: 1px solid #000;
+   text-align: center;
+  }
+
+  .tooltip .desColor{
+   width: 10px;
+   height: 10px;
+   float: left;
+ margin: 9px 8px 1px 8px;
+  }
+
+  .tooltip .desText{
+   display: inline;
+  }
+
+  .focusLine {
+ stroke: black;
+ stroke-width: 1px;
+ stroke-dasharray: 5,5;
+ }
+ </style>
+ </head> 
+<body>
+
+<script src="http://d3js.org/d3.v3.js" charset="utf-8"></script> 
+<script src="linechart.js" charset="utf-8"></script> 
+<svg contentScriptType="text/ecmascript" width="2000" xmlns:xlink="http://www.w3.org/1999/xlink" zoomAndPan="magnify" style="background-color:#ffffff;" contentStyleType="text/css" viewBox="0 0 2000.0 2000.0" height="2000" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" version="1.0">
+<defs>
+<symbol id="fillgauge1" viewBox="0 0 500.0 300.0" preserveAspectRatio="none meet">
+</symbol>
+<symbol id="fillgauge2" viewBox="0 0 200.0 200.0" preserveAspectRatio="none meet">
+</symbol>
+</defs>
+<use x="0" y="0" width="500" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#fillgauge1" xlink:type="simple" xlink:actuate="onLoad" symboltype="17" height="300" xlink:show="embed"/>
+<use x="20" y="20" width="50" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#fillgauge2" xlink:type="simple" xlink:actuate="onLoad" symboltype="17" height="180" xlink:show="embed"/>
+</svg>
+<script src="jquery-3.5.1.min.js"></script>
+<script> 
+var dataset = [
+ {
+ gdp: [[2000,11920],[2001,13170],[2002,14550],
+  [2003,16500],[2004,19440],[2005,22870],
+  [2006,27930],[2007,35040],[2008,45470],
+  [2009,51050],[2010,59490],[2011,73140],
+  [2012,83860],[2013,103550]]
+ }
+];
+
+var gauge1=loadLineChart("fillgauge1",dataset);
+ 
+function refreshLine(gauge1){
+ var updateData = [{
+  gdp: []
+ }];
+
+ $.get("http://localhost:13523/test", function(response, status) {
+      data = JSON.parse(response).data
+      for(let i = 0; i < data.length; i++) {
+        data[i] = [i, data[i]]
+      }
+      updateData[0].gdp = data;
+    });
+
+ gauge1.update(updateData);
+ }
+self.setInterval("refreshLine(gauge1)",5000);
+</script>
+
+</body>
+</html>
