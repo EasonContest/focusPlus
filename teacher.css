@@ -1,5 +1,15 @@
 body {
-    text-align: center; /*FOR IE5 專用才會置中*/
+    /* text-align: center; */
+    font-family: "微軟正黑體";
+}
+
+#c1, #mc1 {
+    padding: 0px;
+    margin: 0px;
+}
+
+.progress-bar {
+    width: 100%;
 }
 
 #all {
@@ -17,7 +27,7 @@ body {
 #teacher {
     float: left;
     padding-top: 20px;
-    font-family: "微軟正黑體";
+    
 }
 
 .menu {
@@ -115,6 +125,11 @@ body {
     color: #707070;
 }
 
+#c1, #mc1 {
+    padding: 0px;
+    margin: 0px;
+}
+
 /* second */
 #second_head {
     width: 150px;
@@ -132,6 +147,11 @@ body {
     font-family: "微軟正黑體";
     font-size: 18px;
     color: #707070;
+}
+
+#c2, #mc2 {
+    padding: 0px;
+    margin: 0px;
 }
 
 /* third */
@@ -153,6 +173,11 @@ body {
     color: #707070;
 }
 
+#c3, #mc3 {
+    padding: 0px;
+    margin: 0px;
+}
+
 /* fourth */
 #fourth_head {
     width: 150px;
@@ -170,4 +195,153 @@ body {
     font-family: "微軟正黑體";
     font-size: 18px;
     color: #707070;
+}
+
+#c4, #mc4 {
+    padding: 0px;
+    margin: 0px;
+}
+
+/* fifth */
+#fifth_head {
+    width: 150px;
+    height: auto;
+    border-radius: 50%;
+}
+
+#fifth {
+    width: 150px;
+    height: auto;
+    margin: 0px;
+}
+
+#fifth_name {
+    font-family: "微軟正黑體";
+    font-size: 18px;
+    color: #707070;
+}
+
+#c5, #mc5 {
+    padding: 0px;
+    margin: 0px;
+}
+
+/* sixth */
+#sixth_head {
+    width: 150px;
+    height: auto;
+    border-radius: 50%;
+}
+
+#sixth {
+    width: 150px;
+    height: auto;
+    margin: 0px;
+}
+
+#sixth_name {
+    font-family: "微軟正黑體";
+    font-size: 18px;
+    color: #707070;
+}
+
+#c6, #mc6 {
+    padding: 0px;
+    margin: 0px;
+}
+
+/* seventh */
+#seventh_head {
+    width: 150px;
+    height: auto;
+    border-radius: 50%;
+}
+
+#seventh {
+    width: 150px;
+    height: auto;
+    margin: 0px;
+}
+
+#seventh_name {
+    font-family: "微軟正黑體";
+    font-size: 18px;
+    color: #707070;
+}
+
+#c7, #mc7 {
+    padding: 0px;
+    margin: 0px;
+}
+
+/* eighth */
+#eighth_head {
+    width: 150px;
+    height: auto;
+    border-radius: 50%;
+}
+
+#eighth {
+    width: 150px;
+    height: auto;
+    margin: 0px;
+}
+
+#eighth_name {
+    font-family: "微軟正黑體";
+    font-size: 18px;
+    color: #707070;
+}
+
+#c8, #mc8 {
+    padding: 0px;
+    margin: 0px;
+}
+
+/* ninth */
+#ninth_head {
+    width: 150px;
+    height: auto;
+    border-radius: 50%;
+}
+
+#ninth {
+    width: 150px;
+    height: auto;
+    margin: 0px;
+}
+
+#ninth_name {
+    font-family: "微軟正黑體";
+    font-size: 18px;
+    color: #707070;
+}
+
+#c9, #mc9 {
+    padding: 0px;
+    margin: 0px;
+}
+
+/* tenth */
+#tenth_head {
+    width: 150px;
+    height: auto;
+    border-radius: 50%;
+}
+
+#tenth {
+    width: 150px;
+    height: auto;
+    margin: 0px;
+}
+
+#tenth_name {
+    font-family: "微軟正黑體";
+    font-size: 18px;
+    color: #707070;
+}
+
+#c10, #mc10 {
+    padding: 0px;
+    margin: 0px;
 }
