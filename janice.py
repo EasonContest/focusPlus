@@ -1,11 +1,10 @@
 import numpy as np
 import pandas as pd
-import sys
 import json
 import webbrowser
 import hashlib
 import datetime
-import random
+import time
 
 from flask import Flask, request, abort
 app = Flask(__name__)
@@ -17,10 +16,10 @@ CORS(app)
 # ser = serial.Serial("COM6", 9600, timeout=2)
 
 # 開啟 model
-#model = load_model("model", "model")
+model = load_model("model", "model")
 
 # 開啟網頁
-#webbrowser.open("index.html")
+webbrowser.open("index.html")
 
 md5 = hashlib.md5()
 
@@ -35,8 +34,8 @@ def start_record(local_user_id=""):
     if local_user_id != "":
         user_id = local_user_id
         predictions[user_id] = []
-        # start_screenshot()
-        # start_record_esp32()
+        start_screenshot()
+        start_record_esp32()
 
         return "", 204
 
@@ -44,21 +43,40 @@ def start_record(local_user_id=""):
         md5.update(str(datetime.datetime.now()).encode())
         user_id = str(md5.hexdigest())
         predictions[user_id] = []
-        # start_screenshot()
-        # start_record_esp32()
+        start_screenshot()
+        start_record_esp32()
 
         return json.dumps({"user_id": user_id}), 200
+@app.route("/get_history")
+def history_fun():
+    data=''
+    f=open(r"./data/user__info.json")
+    data=r.readlines()
+    f.close()
+    return  json.loads(data) 
 
 @app.route("/stopRecord")
 def stop_record():
-    # stop_record_esp32()
-    # stop_screenshot()
+    stop_record_esp32()
+    stop_screenshot()
     md5.update(str(datetime.datetime.now()).encode())
     hash_value = md5.hexdigest()
-    with open("./data/{}/{}_{}.csv".format(user_id, user_id, hash_value), 'w') as f:
-        for user_focused_score in predictions[user_id]:
-            f.writelines(str(user_focused_score) + "\n")
 
+    tt=time.strftime("%m_%d__%H_%M_%S", time.localtime())
+    f=open("./data/ddata/"+tt+".csv","w")
+    for user_focused_score in "1,1,1,1":
+        f.writelines(str(user_focused_score) + "\n")
+    f.close()
+    data=""
+    f = open(r"./data/user_info.json")
+    data=f.readlines()
+    f.close()
+    data=json.loads(data[0])
+    data[str(len(list(data.keys()))+1)]={"name":tt+".csv","time":tt}
+    f = open(r"./data/user_info.json","w")
+    data=json.dumps(data)
+    f.write(data)
+    f.close()
     return "", 204
 
 @app.route("/getPrediction")
@@ -68,7 +86,7 @@ def get_prediction():
 
 @app.route("/getLastPredictionValue")
 def get_last_prediction_value():
-    return json.dumps({"v":str(random.randint(0,99))}) #json.dumps({"last_predictionvalue": predictions[user_id][-1]}), 200
+    return json.dumps({"last_predictionvalue": predictions[user_id][-1]}), 200
 
 @app.route("/getImg")
 def getImg():
@@ -85,10 +103,18 @@ def get_image_json_path():
     
     return json.dumps({"imageJsonPaths": image_json_files_path})
 
-@app.route("/stopAll")
-def stop_All():
-    return sys.exit()
+@app.route("/doweload_new_csv")
+def doweload_new_csv():
+    f = open(r'123.csv')
+    csv=f.readlines()
+    f.close()
+    return Response(csv,mimetype="text/csv",headers={"Content-disposition":"attachment; filename=myplot.csv"})
 
+@app.route("/over_main")
+def over_main_fun():
+    os._exit(0)
+    return 0
+    
 # uvicorn filename:app --port 8001 --workers 1 --proxy-headers
 if __name__ == "__main__":
     app.run(host = '0.0.0.0', port=13523)
