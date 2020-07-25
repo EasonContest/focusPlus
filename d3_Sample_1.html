@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>D3 - Stack Generator</title>
+		<!-- <script type="text/javascript" src="d3/d3.min.js"></script>  -->
+		<script src="https://d3js.org/d3.v4.min.js"></script>
+	</head>
+
+	<body>
+
+		<svg width="1000" height="500">
+		</svg>
+		<div id="chart"></div>
+
+		<script type="text/javascript">
+			var width = 1200,
+			height = 500;
+			var svg = d3.select("body")
+						.select("svg")
+						.attr("width", width+50)
+						.attr("height", height+80);
+			maxValue = {"Max":0};
+			function generateColumn(item, index){
+					if(index != 0){
+						maxValue[item] = 0;
+					}
+				}
+			function SumData(arr){
+				var sum=0;
+				for (var i = 0; i < arr.length; i++) {
+					toint = parseInt(arr[i]);
+					if(String(toint) != "NaN"){
+						sum += toint;
+					}
+					else{
+					}
+				};
+				return sum;
+			}
+        	d3.csv("census.csv", function(error, data) { 
+				if (error) throw error;
+				lengthes = data.length - 1;
+				columns = data.columns;
+				delete data.columns;
+				columns.forEach(generateColumn);
+				columns.splice(columns.indexOf("State"),1);
+				console.log(data);
+
+				value = Object.keys(data).map(function(k){
+					//console.log(Object.keys(data[key]))
+					
+					getMax = Object.keys(data[k]).map(function(key){
+						//console.log(key+" : "+data[k][key]);
+						temp = data[k][key];
+						data[k][key] = parseInt(data[k][key]);
+						if(data[k][key] > maxValue[key]){
+							//console.log(data[k][key],">", maxValue[key]);
+							maxValue[key] = data[k][key];
+						}else if(key == "State"){
+							data[k][key] = temp;}
+					});
+					arraySum = SumData(Object.values(data[k]));
+					if(arraySum>maxValue.Max){
+								maxValue['Max'] = arraySum;
+							}
+					return getMax
+				});
+				var colors = ["#EA0000","#FF8040","#FFD306","#9AFF02","#007500","#2894FF", "#8600FF"];
+				
+				var stackGenerator = d3.stack()
+									   .keys(columns);
+				var g = d3.select('svg')
+				.selectAll('.series')
+				.data(stackGenerator(data))
+				.enter().append('g')
+				.classed('series', true)
+				.attr('fill', function(d, i) {
+					//console.log(d);
+					return colors[i];
+				});
+				var YScale = d3.scaleLinear()
+							  .domain([0,maxValue.Max])
+							  .range([0, height]);
+				g.selectAll('rect')
+				.data(function(d) {
+					if(true){
+						//console.log("AAA");
+						//console.log(d);
+						return d;
+					}
+				})
+				.enter().append('rect')
+				.attr('x', function(d, i) {
+					return i * 20 + 55;
+				})
+				.attr('y', function(d) {
+					return height - YScale(d[0]) - YScale(d[1] - d[0]);
+				})
+				.attr('width', 8)
+				.attr('height', function(d) {
+					//console.log(YScale(d[1] - d[0]));
+					return YScale(d[1] - d[0]);
+				});
+				
+				var stackGenerator2 = d3.stack()
+									   .keys(["State"]);
+							   
+				g
+				.data(stackGenerator2(data))
+				.attr('color', "white")
+				.selectAll("text")
+				.data(function(d){
+					return d;
+				})
+				.enter().append("text")
+				.attr('x', function(d, i) {
+					return i * 20 + 54;
+				})
+				.attr('y', function(d) {
+					return height +10 + 3;
+				})
+				.style('fill', 'black').style('font-size', '10px').text(function(d,i){
+					return d.data.State
+				});
+
+				g
+				.attr('color', "white")
+				.selectAll("text")
+				.data(function(d){
+					return d;
+				})
+				.enter().append("rect")
+				.attr('x', function(d, i) {
+					return i * 20 + 55 + 3;
+				})
+				.attr('y', function(d) {
+					return height + 10 -10;
+				})
+				.attr('width', 2)
+				.attr('height', function(d) {
+					return 3;
+				})
+				.attr("fill", "black");
+
+				var yAxis = d3.scaleLinear().range([height, 0]).domain([0, maxValue['Max']]);
+				//console.log("AAA")
+				svg.append("g")
+					.attr("transform","translate(40,0)")
+					.call(d3.axisLeft(yAxis)
+						.tickFormat(d3.formatPrefix(".1", 1e6)));
+				svg.append("text")
+                .attr("class", "y label")
+                .attr("text-anchor", "end")
+                .attr("y", 50)
+                .attr('font-size', "9px")
+                .attr("transform", "rotate(-90)")
+                .text("Population");
+				//console.log("MaxValue = ", maxValue)
+				//console.log(value)
+				//console.log(maxValue);
+				needLabel = Object.keys(maxValue).filter(function(item){
+					return item != "Max"
+				});
+				var barGenerator = d3.stack()
+									   .keys(needLabel);
+				svg.selectAll(".bartext")
+					.data(barGenerator([maxValue]))
+					.enter()
+					.append("text")
+					.attr("class", "bartext")
+					.attr("text-anchor", "middle")
+					.attr("fill", "black")
+					.attr("x", function(d,i) {
+						correct = d.key.length
+						return width -120 - (20 - correct)*5
+					})
+					.attr("y", function(d,i) {
+						console.log(d);
+						console.log("AA")
+						return i * 30 + 50;
+					})
+					.text(function(d){
+						return d.key;
+					})
+				svg.selectAll("AA")
+					.data(barGenerator([maxValue]))
+					.enter()
+					.append("rect").attr("class", "barrect")
+				.attr('x', function(d, i) {
+					return width -240;
+				})
+				.attr('y', function(d, i) {
+					return i * 30 + 40;
+				})
+				.attr('width', 10)
+				.attr('height', function(d) {
+					return 10;
+				})
+				.attr("fill", function(d,i){
+					return colors[i];
+				});
+
+				});
+		</script>
+		
+
+
+		<script>
+    
+
+</script>
+<dev>Reference:<br>
+	Teacher's PowerPoint and Video (Help a lot)<br><br>
+	<a href="url">https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Guide/Loops_and_iteration</a><br><br>
+	<a href="url">https://www.ifreesite.com/color/</a><br><br>
+	<a href="url">https://www.w3schools.com/html/html_links.asp</a><br><br>
+	<a href="url">https://wcc723.github.io/d3js/2014/10/12/Ironman-30-days-13/</a><br><br>
+	<a href="url">https://medium.com/design-muffin/d3-js-%E5%85%A5%E9%96%80%E5%AF%A6%E4%BD%9C-%E3%84%A7-%E5%B0%87-csv-%E6%AA%94%E7%B9%AA%E8%A3%BD%E6%88%90%E9%95%B7%E6%A2%9D%E5%9C%96%E8%A6%96%E8%A6%BA%E5%8C%96%E7%B6%B2%E9%A0%81-816acd611ecb</a><br><br>
+</dev>
+	</body>
+</html>

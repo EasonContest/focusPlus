@@ -69,3 +69,32 @@ $("#first_box").click(() => {
 // });
 
 
+
+
+
+
+// D3 的部分 by Eason
+svg = d3.selectAll("svg")
+
+d3.csv("./data/sample_len900.csv", function(error, data) { 
+    if (error) throw error;
+    console.log(data);
+    var dataset = [];
+    for(i in data){
+        x = parseInt(data[i]["TimeStamp"])
+        y = 600 - Math.round(data[i]["FocusRecord"]*400)
+        dataset.push([x,y]);
+    }
+    console.log("dataset", dataset);
+
+ 
+    var line = d3.line();
+    
+    svg.append("path")
+        .attr("d", line(dataset))
+        .attr("stroke", "black")
+        .attr("stroke-width", "1px")
+        .attr("fill", "none");
+    //create x, y bar
+
+})
