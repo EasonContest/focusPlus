@@ -1,0 +1,24 @@
+#end {
+    font-size: 3em; 
+    font-family: 微軟正黑體; 
+    border: 1px solid black; 
+    padding: 0px 5px;
+    color: red;
+}
+
+body {
+    text-align: center; /*FOR IE5 專用才會置中*/
+}
+
+.little_tree{
+    width: 300px;
+    height: auto;
+    display:block; 
+    margin:auto;
+}
+
+#Check_Txt {
+    color:black;
+    text-align: center;
+    font-size: 60px;
+}

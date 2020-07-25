@@ -1,3 +1,4 @@
+// document.cookie = "name=janice" 
 // 讀取API
 
 // url = "http://localhost:13523/getImg"

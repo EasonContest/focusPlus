@@ -1,0 +1,173 @@
+body {
+    text-align: center; /*FOR IE5 專用才會置中*/
+}
+
+#all {
+    display: inline-block;
+    margin:15px auto;
+    text-align: justify;
+    margin-bottom: 0px;
+}
+
+#logo {
+    float: left;
+    width: 200px;
+}
+
+#teacher {
+    float: left;
+    padding-top: 20px;
+    font-family: "微軟正黑體";
+}
+
+.menu {
+    width: 40px;
+    height: 40px;
+    border: solid 3px #707070;
+    float: right;
+    padding: 8px;
+    border-radius: 10px;
+    margin-left: 1000px;
+}
+
+.settings {
+    width: 40px;
+    height: 40px;
+    border: solid 3px #707070;
+    float: right;
+    padding: 8px;
+    border-radius: 10px;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+#first_name {
+    font-family: "微軟正黑體";
+    font-size: 18px;
+    color: #707070;
+}
+
+.first_line {
+    margin: 5px auto;/*div對齊效果*/
+    text-align: center;/*display: inline對齊效果*/
+}
+  
+.second_line {
+    margin: 5px auto;/*div對齊效果*/
+    text-align: center;/*display: inline對齊效果*/
+}
+  
+.first_line div {
+    display: inline-block;
+    vertical-align: top;
+    width: 150px;
+    height: 250px;
+    margin: 0px 50px;
+}
+
+#one {
+    width: 150px;
+    height: auto;
+}
+
+.second_line div {
+    display: inline-block;/*讓div並排*/ 
+    vertical-align: top;/*就算個個div行數不同，也一律向上對齊*/ 
+    width: 150px;
+    height: 250px;
+    /* border: 1px solid #FF0000; */
+    /* border-radius:3px; */
+    margin: 0px 50px;
+}
+
+#first_head {
+    width: 150px;
+    height: auto;
+    border-radius: 50%;
+}
+
+#one {
+    margin: 0px;
+}
+
+#first_head {
+    width: 150px;
+    height: auto;
+    border-radius: 50%;
+}
+
+/* first */
+#first_head {
+    width: 150px;
+    height: auto;
+    border-radius: 50%;
+}
+
+#first {
+    width: 150px;
+    height: auto;
+    margin: 0px;
+}
+
+#first_name {
+    font-family: "微軟正黑體";
+    font-size: 18px;
+    color: #707070;
+}
+
+/* second */
+#second_head {
+    width: 150px;
+    height: auto;
+    border-radius: 50%;
+}
+
+#second {
+    width: 150px;
+    height: auto;
+    margin: 0px;
+}
+
+#second_name {
+    font-family: "微軟正黑體";
+    font-size: 18px;
+    color: #707070;
+}
+
+/* third */
+#third_head {
+    width: 150px;
+    height: auto;
+    border-radius: 50%;
+}
+
+#third {
+    width: 150px;
+    height: auto;
+    margin: 0px;
+}
+
+#third_name {
+    font-family: "微軟正黑體";
+    font-size: 18px;
+    color: #707070;
+}
+
+/* fourth */
+#fourth_head {
+    width: 150px;
+    height: auto;
+    border-radius: 50%;
+}
+
+#fourth {
+    width: 150px;
+    height: auto;
+    margin: 0px;
+}
+
+#fourth_name {
+    font-family: "微軟正黑體";
+    font-size: 18px;
+    color: #707070;
+}
