@@ -34,8 +34,8 @@ def start_record(local_user_id=""):
     if local_user_id != "":
         user_id = local_user_id
         predictions[user_id] = []
-        start_screenshot()
-        start_record_esp32()
+        # start_screenshot()
+        # start_record_esp32()
 
         return "", 204
 
@@ -43,15 +43,15 @@ def start_record(local_user_id=""):
         md5.update(str(datetime.datetime.now()).encode())
         user_id = str(md5.hexdigest())
         predictions[user_id] = []
-        start_screenshot()
-        start_record_esp32()
+        # start_screenshot()
+        # start_record_esp32()
 
         return json.dumps({"user_id": user_id}), 200
 
 @app.route("/stopRecord")
 def stop_record():
-    stop_record_esp32()
-    stop_screenshot()
+    # stop_record_esp32()
+    # stop_screenshot()
     md5.update(str(datetime.datetime.now()).encode())
     hash_value = md5.hexdigest()
     with open("./data/{}/{}_{}.csv".format(user_id, user_id, hash_value), 'w') as f:
