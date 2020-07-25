@@ -8,9 +8,11 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 </head>
 <body>
-  <div class="d-flex justify-content-center align-items-center" style="height: 100vh; width: 100vw;">
+  <div class="d-flex flex-column justify-content-around align-items-center" style="height: 100vh; width: 100vw;">
+    <div id="image" style="height: 640px; width: 1000px; border: 1px solid black;">123</div>
     <div id="end" style="font-size: 3em; font-family: 微軟正黑體; border: 1px solid black; padding: 20px;">結束</div>  
   </div>
+
 
   <!-- JS, Popper.js, and jQuery -->
   <script src="jquery-3.5.1.min.js"></script>
@@ -20,13 +22,11 @@
     $('#end').hide(0);
     $('#end').delay(100).show(0);
 
-    // $.get("http://localhost:13523/test", function(response, status){
-    //   data = JSON.parse(response).data
-    //   for(let i = 0; i < data.length; i++) {
-    //     data[i] = [i, data[i]]
-    //   }
-    //   console.log(data)
-    // });
+    $.get("http://localhost:13523/anotherGetPrediction", {user_id: localStorage.getItem("user_id")}, function(response, status){
+      let base64Image = JSON.parse(response).base64Image;
+      console.log(123);
+      $("#image").replaceWith(`<img src='data:image/png;base64, ${base64Image}'></img>`);
+    });
   
     $("#end").click(() => {
       url = "http://localhost:13523/stopRecord";

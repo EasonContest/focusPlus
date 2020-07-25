@@ -1,5 +1,3 @@
-// const cookies = document.cookie
-
 // 讀取API
 
 // url = "http://localhost:13523/getImg"
@@ -8,19 +6,26 @@
 //                 data = response.json().then(function(data){
 //                     $.getJSON(data.filename, function(json) { // 讀取本地 Json 檔案，裡面可以有任意物件
 //                         console.log(json);
-//                     });
+//            .data         });
 //                 })
 //             })
 
-
 $("#first_box").click(() => {
-    console.log(123);
-    url = "http://localhost:13523/startRecord";
-    $.get(url, {user_id: ""}, function(response, status){
-        alert(response);
-        window.location.assign("./watching.html");
-        // alert("已經開始紀錄了喔!!");
-    });
+    let url = "http://localhost:13523/startRecord";
+    if (localStorage.getItem("user_id")) {
+        user_id = localStorage.getItem("user_id");
+        $.get(url, {user_id: user_id}, function(response){
+            window.location.assign("./watching.html");
+        });
+    } else {
+        $.get(url, {user_id: ""}, function(response){
+            let user_id = JSON.parse(response).user_id
+            alert(user_id);
+            alert(typeof(user_id))
+            localStorage.setItem("user_id", user_id);
+            window.location.assign("./watching.html");
+        });
+    }
 });
 
 // $(document).ready(function(){
