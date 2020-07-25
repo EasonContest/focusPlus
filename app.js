@@ -11,6 +11,16 @@
 //                 })
 //             })
 
+if (localStorage.getItem("get_focused_score_image")) {
+    $.get("http://localhost:13523/anotherGetPrediction", {user_id: localStorage.getItem("user_id")}, function(response, status){
+        let base64Image = JSON.parse(response).base64Image;
+        console.log(123);
+        $("#image").replaceWith(`<img src='data:image/png;base64, ${base64Image}'></img>`);
+    });
+
+    localStorage.setItem("get_focused_score_image", false);
+}
+
 $("#first_box").click(() => {
     let url = "http://localhost:13523/startRecord";
     if (localStorage.getItem("user_id")) {

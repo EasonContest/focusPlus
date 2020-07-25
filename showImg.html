@@ -20,15 +20,13 @@
     <button id="answerButton" class="btn" onclick="alert('開始作答囉')" style="visibility: hidden;">開始作答</button>
     <svg></svg>
 <script>
-    console.log("AAA")
     $.getJSON("test.json", function(json) {
     console.log(json); // this will show the info it in firebug console
     ByteArrayAsBase64 = json.Img;
-    console.log("QQQ")
     //document.getElementById("ItemPreview").src = "data:image/png;base64," + ByteArrayAsBase64;
     document.getElementById('targetImg')
     .setAttribute(
-        'src', 'data:image/png;base64,'+ByteArrayAsBase64
+        'src', 'data:image/png;base64,'+ ByteArrayAsBase64
     );
 
     $('#answerButton')
@@ -37,7 +35,7 @@
 
     d3.select("svg").append("circle")
 
-    url = "http://localhost:13523/getImg"
+    url = "http://localhost:1 3523/getImg"
     data = fetch(url)
                 .then(function(response) {
                     data = response.json().then(function(data){
