@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+import sys
 import json
 import webbrowser
 import hashlib
@@ -83,6 +84,10 @@ def get_image_json_path():
             image_json_files_path.append(user_file_path[index])
     
     return json.dumps({"imageJsonPaths": image_json_files_path})
+
+@app.route("/stopAll")
+def stop_All():
+    return sys.exit()
 
 # uvicorn filename:app --port 8001 --workers 1 --proxy-headers
 if __name__ == "__main__":

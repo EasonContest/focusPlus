@@ -12,7 +12,7 @@ body {
 }
 
 .little_tree{
-    width: 500px;
+    width: 700px;
     height: auto;
     display:block; 
     margin:auto;
@@ -22,4 +22,8 @@ body {
     color:black;
     text-align: center;
     font-size: 60px;
+}
+
+#end {
+    margin: 10px;
 }

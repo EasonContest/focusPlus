@@ -39,6 +39,11 @@ $("#first_box").click(() => {
     }
 });
 
+$("#sixth_box").click (() => {
+    let url = "http://localhost:13523/stopAll";
+});
+    
+
 // $(document).ready(function(){
 //     $("#second_box").click(function() {
 //         url = "http://localhost:13523/test"

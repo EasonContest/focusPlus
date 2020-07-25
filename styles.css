@@ -4,25 +4,30 @@ body {
 
 #all {
     display: inline-block;
-    margin:15px auto;
+    margin: 0px;
     text-align: justify;
 }
 
+#image {
+    height: 500px; 
+    width: auto;
+}
+
 .logo {
-    width: 343px;
-    height: 121px;
+    width: 300px;
+    height: auto;
     object-fit: contain;
 }
 
 .chat {
-    width: 695px;
+    width: 670px;
     height: 355px;
     object-fit: contain;
     padding-left: 100px;
 }
 
-.Doraemon {
-    width: 463px;
+#Doraemon {
+    width: 410px;
     height: 535px;
     object-fit: contain;
     padding-left: 100px;
