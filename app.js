@@ -40,8 +40,19 @@ $("#first_box").click(() => {
 });
 
 $("#sixth_box").click (() => {
-    let url = "http://localhost:13523/stopAll";
+    let url = "http://localhost:13523/over_main";
+    $.get(url, function(response){
+      console.log(typeof(response));
+  });
 });
+
+$("third_box").click(() => {
+    let url = "http://localhost:13523/doweload_new_csv";
+    $.get(url, function(response){
+      console.log(typeof(response));
+      download("data.csv",response)
+  });
+})
     
 
 // $(document).ready(function(){
