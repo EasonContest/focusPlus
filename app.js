@@ -37,13 +37,13 @@ $("#first_box").click(() => {
             window.location.assign("./watching.html");
         });
     }
-});
+});   
 
-$("#sixth_box").click (() => {
-    let url = "http://localhost:13523/over_main";
-    $.get(url, function(response){
-      console.log(typeof(response));
-  });
+$("#second_box").click(function() {
+    url = "http://localhost:13523/get_history"
+    $.get(url, function(data,status){
+        console.log(typeof(response));
+    });
 });
 
 $("third_box").click(() => {
@@ -53,16 +53,27 @@ $("third_box").click(() => {
       download("data.csv",response)
   });
 })
-    
 
-// $(document).ready(function(){
-//     $("#second_box").click(function() {
-//         url = "http://localhost:13523/test"
-//         $.get(url, function(data,status){
-//             alert("數據：" + data + "\n狀態：" + status);
-//         });
+// $("#fourth_box").click(function() {
+//     let url = "http://localhost:13523/test"
+//     $.get(url, function(data,status){
+//         console.log(typeof(response));
 //     });
 // });
+
+// $("#fifth_box").click(function() {
+//     let url = "http://localhost:13523/test"
+//     $.get(url, function(data,status){
+//         console.log(typeof(response));
+//     });
+// });
+
+$("#sixth_box").click (() => {
+    let url = "http://localhost:13523/over_main";
+    $.get(url, function(response){
+      console.log(typeof(response));
+  });
+});
 
 // $(document).ready(function(){
 //     $("#third_box").click(function() {
@@ -91,14 +102,14 @@ $("third_box").click(() => {
 //     });
 // });
 
-// $(document).ready(function(){
-//     $("#sixth_box").click(function() {
-//         url = "http://localhost:13523/test"
-//         $.get(url, function(data,status){
-//             alert("數據：" + data + "\n狀態：" + status);
-//         });
-//     });
-// });
+$(document).ready(function(){
+    $("#sixth_box").click(function() {
+        url = "http://localhost:13523/test"
+        $.get(url, function(data,status){
+            alert("數據：" + data + "\n狀態：" + status);
+        });
+    });
+});
 
 
 
