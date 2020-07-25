@@ -1,3 +1,13 @@
+body {
+    text-align: center; /*FOR IE5 專用才會置中*/
+}
+
+#all {
+    display: inline-block;
+    margin:15px auto;
+    text-align: justify;
+}
+
 .logo {
     width: 343px;
     height: 121px;
@@ -8,12 +18,14 @@
     width: 695px;
     height: 355px;
     object-fit: contain;
+    padding-left: 100px;
 }
 
 .Doraemon {
     width: 463px;
     height: 535px;
     object-fit: contain;
+    padding-left: 250px;
 }
 
 .data {
@@ -30,16 +42,16 @@
     float: right;
 }
 
-
-
 #left_box {
     float: left;
     width: 470px;
     height: 187px;
+    padding-right: 50px;
 }
 
 #right_box {
     float: right;
+    padding-right: 130px;
 }
 
 /* 文字 */
@@ -164,5 +176,3 @@
     margin: auto;
     padding-top: 11px;
 }
-
-
