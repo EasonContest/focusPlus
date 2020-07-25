@@ -3,13 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title >Document </title>
   <!-- CSS only -->
+  <link rel="stylesheet" href="watch.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 </head>
 <body>
-  <div class="d-flex flex-column justify-content-around align-items-center" style="height: 100vh; width: 100vw;">
-    <div id="end" style="font-size: 3em; font-family: 微軟正黑體; border: 1px solid black; padding: 20px;">結束</div>  
+
+  <div >
+    <img src="pic/little_tree.png" alt="tree image" class="little_tree">
+  </div>
+
+  <div id="Check_Txt">
+    <span id="Check_i">
+      00:00
+    </span>
+  </div>
+
+  <!-- <span id="Check_Txt" >
+    <span id="Check_i">
+      0小時0分0秒
+    </span>
+  </span> -->
+  
+
+  <div class="d-flex justify-content-center align-items-center">
+    <div id="end"> 結束 </div>
   </div>
 
 
@@ -20,7 +39,7 @@
   <script>
     $('body').hide(0);
     $('#end').delay(5000).show(0);
-  
+
     $("#end").click(() => {
       url = "http://localhost:13523/stopRecord";
       $.get(url, function(response, status){
@@ -29,5 +48,6 @@
       });
     });
     </script>
+    <script src="watch.js"></script>
 </body>
 </html>

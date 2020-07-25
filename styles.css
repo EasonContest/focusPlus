@@ -25,7 +25,7 @@ body {
     width: 463px;
     height: 535px;
     object-fit: contain;
-    padding-left: 250px;
+    padding-left: 100px;
 }
 
 .data {
@@ -51,7 +51,7 @@ body {
 
 #right_box {
     float: right;
-    padding-right: 130px;
+    padding-right: 50px;
 }
 
 /* 文字 */
